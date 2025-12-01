@@ -134,6 +134,113 @@ function Logger(scope = 'app') {
 }
 
 // ###############################
+// ✅ 유효성 검사 함수들
+// ###############################
+
+/**
+ * 비어있지 않은 문자열인지 검사
+ * - null, undefined, 빈 문자열, 공백만 있는 문자열 → false
+ */
+function isNonEmptyString(value) {
+    if (typeof value !== 'string') return false;
+    return value.trim().length > 0;
+}
+
+/**
+ * 숫자 형태의 문자열인지 검사 (정수/실수 모두 허용)
+ * - 예: "123", "3.14", "-10" → true
+ * - 공백, 비어있음, 숫자 아님 → false
+ */
+function isNumberString(value) {
+    if (typeof value !== 'string') return false;
+    const trimmed = value.trim();
+    if (trimmed === '') return false;
+    const num = Number(trimmed);
+    return !Number.isNaN(num);
+}
+
+/**
+ * 정수 형태의 문자열인지 검사
+ * - 예: "10", "-5" → true
+ * - "3.14", "abc" → false
+ */
+function isIntegerString(value) {
+    if (typeof value !== 'string') return false;
+    const trimmed = value.trim();
+    if (trimmed === '') return false;
+    const num = Number(trimmed);
+    return Number.isInteger(num);
+}
+
+/**
+ * 정수가 특정 범위 안에 있는지 검사 (문자열도 허용)
+ * - 값이 숫자가 아니거나 정수가 아니면 false
+ * - min <= 값 <= max 이면 true
+ */
+function isIntInRange(value, min, max) {
+    const num = typeof value === 'number' ? value : Number(String(value).trim());
+    if (!Number.isInteger(num)) return false;
+    return num >= min && num <= max;
+}
+
+/**
+ * 이메일 형식인지 간단히 검사
+ * - 아주 엄격한 RFC 수준은 아니고, 실무에서 자주 쓰는 기본 패턴
+ */
+function isEmail(value) {
+    if (typeof value !== 'string') return false;
+    const trimmed = value.trim();
+    if (trimmed === '') return false;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(trimmed);
+}
+
+/**
+ * 휴대폰 번호(한국) 형식인지 검사
+ * - 숫자만 남긴 후 01로 시작 + 10~11자리 허용
+ *   예: 01012345678, 0112345678
+ *   하이픈 포함 입력도 허용: 010-1234-5678
+ */
+function isKoreanPhone(value) {
+    if (typeof value !== 'string') return false;
+    const digits = value.replace(/\D/g, ''); // 숫자만 남김
+    // 01로 시작, 뒤에 8~9자리 (총 10~11자리)
+    return /^01[0-9]{8,9}$/.test(digits);
+}
+
+/**
+ * 날짜 입력이 유효한 YYYYMMDD인지 검사
+ * - "2025-11-28", "2025/11/28", "20251128" 모두 허용
+ * - 내부적으로 숫자만 남기고 8자리 YYYYMMDD 검사
+ */
+function isValidDateYYYYMMDD(input) {
+    if (typeof input !== 'string') return false;
+    const digits = f_normalizeDateInput(input); // 숫자만 남김
+
+    if (digits.length !== 8) return false;
+
+    const year = Number(digits.slice(0, 4));
+    const month = Number(digits.slice(4, 6));
+    const day = Number(digits.slice(6, 8));
+
+    if (!Number.isInteger(year) || !Number.isInteger(month) || !Number.isInteger(day)) {
+        return false;
+    }
+
+    // 간단한 연도 범위 체크 (필요시 조정 가능)
+    if (year < 1900 || year > 2100) return false;
+
+    // 실제로 존재하는 날짜인지 Date 객체로 검증
+    const date = new Date(year, month - 1, day);
+    const valid =
+        date.getFullYear() === year &&
+        date.getMonth() === month - 1 &&
+        date.getDate() === day;
+
+    return valid;
+}
+
+// ###############################
 // 📤 모듈 내보내기
 // ###############################
 module.exports = {
@@ -145,4 +252,12 @@ module.exports = {
     f_normalizeLabel,
     f_printCodeBlock,
     Logger,
+    // ✅ 유효성 검사 함수들
+    isNonEmptyString,
+    isNumberString,
+    isIntegerString,
+    isIntInRange,
+    isEmail,
+    isKoreanPhone,
+    isValidDateYYYYMMDD,
 };
