@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 // ###############################
 // 🎲 이모지 배열 정의
 // ###############################
@@ -84,6 +87,53 @@ function f_printCodeBlock(title, code) {
 
 
 // ###############################
+// 📝 간단 Logger 생성 함수
+// ###############################
+/**
+ * scope(이름) 별로 로그 파일을 만들어 주는 간단 Logger
+ * - 콘솔 출력 + 파일 로그 둘 다 남김
+ * - 로그 파일 경로: <프로젝트>/tmp/logs/<scope>.log
+ *
+ * 사용 예:
+ *   const { Logger } = require('./utils');
+ *   const log = Logger('lesson24');
+ *   log.info('시작');
+ *   log.warn('경고');
+ *   log.error('에러!');
+ */
+function Logger(scope = 'app') {
+    const logDir = path.join(__dirname, 'tmp', 'logs');
+    if (!fs.existsSync(logDir)) {
+        fs.mkdirSync(logDir, { recursive: true });
+    }
+
+    const logFile = path.join(logDir, `${scope}.log`);
+
+    function write(level, message) {
+        const time = new Date().toISOString();
+        const line = `[${time}][${scope}][${level}] ${message}`;
+        // 콘솔 출력
+        console.log(line);
+        // 파일에 추가
+        try {
+            fs.appendFileSync(logFile, line + '\n', 'utf-8');
+        } catch (err) {
+            console.error('Logger 파일 쓰기 오류:', err.message);
+        }
+    }
+
+    return {
+        info: (msg) => write('💡 INFO', msg),
+        warn: (msg) => write('⚠️ WARN', msg),
+        error: (msg) => write('🚫 ERROR', msg),
+        // 필요하면 디버그 용도도 추가 가능
+        debug: (msg) => write('🐛 DEBUG', msg),
+        // 로그 파일 위치 확인용
+        getLogFilePath: () => logFile,
+    };
+}
+
+// ###############################
 // 📤 모듈 내보내기
 // ###############################
 module.exports = {
@@ -94,4 +144,5 @@ module.exports = {
     f_normalizeDateInput,
     f_normalizeLabel,
     f_printCodeBlock,
+    Logger,
 };
