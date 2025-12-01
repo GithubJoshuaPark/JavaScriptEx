@@ -15,6 +15,11 @@ function getRandomEmoji() {
     return ME_EMOJI[randomIndex];
 }
 
+// 간단한 sleep 유틸 (ms 후 resolve)
+function f_sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 // ###############################
 // ⏸️ 일시정지 함수
 // ###############################
@@ -56,5 +61,6 @@ async function f_pause(rlInterface) {
 module.exports = {
     ME_EMOJI,
     getRandomEmoji,
-    f_pause
+    f_pause,
+    f_sleep,
 };
