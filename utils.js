@@ -55,6 +55,25 @@ async function f_pause(rlInterface) {
     });
 }
 
+/**
+ * YYYYMMDD 형식으로 정리:
+ * - 사용자가 2025-11-28, 2025/11/28, 20251128 처럼 입력해도
+ *   숫자만 남기고 "20251128" 형태로 맞춰 줍니다.
+ */
+function f_normalizeDateInput(input) {
+    if (!input) return '';
+    return input.replace(/\D/g, ''); // 숫자만 남김
+}
+
+/**
+ * 파일명에 쓸 라벨을 안전하게 변환 (공백/한글 등 → _ 로 대체)
+ */
+function f_normalizeLabel(label) {
+    if (!label) return 'unknown';
+    return String(label).replace(/[^0-9A-Za-z_-]+/g, '_');
+}
+
+
 // ###############################
 // 📤 모듈 내보내기
 // ###############################
@@ -63,4 +82,6 @@ module.exports = {
     getRandomEmoji,
     f_pause,
     f_sleep,
+    f_normalizeDateInput,
+    f_normalizeLabel,
 };

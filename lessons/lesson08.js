@@ -4,7 +4,7 @@
 
 const { f_pause } = require('../utils');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 8: Scope와 Hoisting 동작 실험하기');
     console.log('='.repeat(50));
     console.log('');
@@ -36,7 +36,7 @@ async function run() {
     }
     // console.log(blockVar); // ❌ 에러! 블록 밖에서 접근 불가
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. var vs let/const 스코프 차이
@@ -60,7 +60,7 @@ async function run() {
     console.log('');
     console.log('💡 var는 함수 스코프, let/const는 블록 스코프를 따릅니다.');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. 호이스팅 (Hoisting) - var
@@ -75,7 +75,7 @@ async function run() {
     console.log('');
     console.log('💡 var는 선언이 호이스팅되지만 undefined로 초기화됩니다.');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. 호이스팅 (Hoisting) - let/const
@@ -90,7 +90,7 @@ async function run() {
     console.log('');
     console.log('💡 let/const도 호이스팅되지만, 선언 전까지 접근 불가 (TDZ).');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 5. 함수 호이스팅

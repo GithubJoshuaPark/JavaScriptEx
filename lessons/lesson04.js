@@ -4,7 +4,7 @@
 
 const { f_pause } = require('../utils');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 4: 반복문으로 숫자 합계 계산하기');
     console.log('='.repeat(50));
     console.log('');
@@ -25,7 +25,7 @@ async function run() {
     }
     console.log(sumFor);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. while 문 (조건이 참인 동안 반복)
@@ -42,7 +42,7 @@ async function run() {
     }
     console.log(`1부터 ${n}까지의 합 (while): ${sumWhile}`);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. do - while 문 (무조건 한 번은 실행)
@@ -62,7 +62,7 @@ async function run() {
     console.log('');
     console.log('💡 do-while 문은 조건이 처음부터 거짓이어도 코드 블록이 최소 한 번은 실행됩니다.');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. break와 continue
@@ -90,7 +90,7 @@ async function run() {
     }
     console.log(`최종 합계: ${total}`);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 5. 중첩 반복문 (구구단)

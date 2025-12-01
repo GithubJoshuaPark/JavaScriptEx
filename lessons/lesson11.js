@@ -5,7 +5,7 @@
 
 const { f_pause, getRandomEmoji } = require('../utils');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 11: Destructuring & Spread 연산자 실습');
     console.log('='.repeat(50));
     console.log('');
@@ -34,13 +34,13 @@ async function run() {
     console.log('restItems:', restItems);
 
     console.log(`
-💡 배열 구조 분해 포인트:
-   - 순서(position)에 따라 값이 매칭된다.
-   - 쉼표(,)로 건너뛸 수 있다.
-   - ...rest 문법으로 나머지를 한 번에 모을 수 있다.
-`);
+    💡 배열 구조 분해 포인트:
+    - 순서(position)에 따라 값이 매칭된다.
+    - 쉼표(,)로 건너뛸 수 있다.
+    - ...rest 문법으로 나머지를 한 번에 모을 수 있다.
+    `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. 객체 구조 분해 할당 (Object Destructuring)
@@ -86,7 +86,7 @@ async function run() {
    - 기본값 (= '기본')을 설정하면, 해당 키가 없을 때 사용된다.
 `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. 함수 파라미터에서 Destructuring 사용하기
@@ -101,10 +101,10 @@ async function run() {
     printUserInfo(user);
 
     console.log(`
-💡 함수 파라미터에서 바로 구조 분해를 하면:
-   - 함수 내부에서 user.name, user.age 이런 식으로 접근할 필요가 없다.
-   - 필요한 필드만 바로 꺼내 쓸 수 있어 코드가 간결해진다.
-`);
+    💡 함수 파라미터에서 바로 구조 분해를 하면:
+    - 함수 내부에서 user.name, user.age 이런 식으로 접근할 필요가 없다.
+    - 필요한 필드만 바로 꺼내 쓸 수 있어 코드가 간결해진다.
+    `);
 
     console.log('\n배열 파라미터 예시');
 
@@ -115,7 +115,7 @@ async function run() {
     sumPair([10, 20]);
     sumPair([7, 5]);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. Spread 연산자 — 배열
@@ -143,12 +143,12 @@ async function run() {
     console.log('복사본 copyArr:', copyArr);
 
     console.log(`
-💡 Spread 연산자 (...) - 배열
-   - 배열을 "펼쳐서" 각 요소로 나열한다.
-   - 배열 병합, 복사, 사이에 끼워넣기 등에 매우 자주 사용된다.
-`);
+    💡 Spread 연산자 (...) - 배열
+    - 배열을 "펼쳐서" 각 요소로 나열한다.
+    - 배열 병합, 복사, 사이에 끼워넣기 등에 매우 자주 사용된다.
+    `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 5. Spread 연산자 — 객체
@@ -189,13 +189,13 @@ async function run() {
     console.log('extendedProfile:', extendedProfile);
 
     console.log(`
-💡 Spread 연산자 (...) - 객체
-   - 기존 객체를 "펼쳐서" 새로운 객체를 만들 때 사용.
-   - 뒤에 오는 속성들이 앞의 것들을 덮어쓴다.
-   - React, Redux, 설정 객체 등에서 압도적으로 자주 보이는 패턴.
-`);
+    💡 Spread 연산자 (...) - 객체
+    - 기존 객체를 "펼쳐서" 새로운 객체를 만들 때 사용.
+    - 뒤에 오는 속성들이 앞의 것들을 덮어쓴다.
+    - React, Redux, 설정 객체 등에서 압도적으로 자주 보이는 패턴.
+    `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 6. Destructuring + Rest + Spread 조합
@@ -234,11 +234,11 @@ async function run() {
     console.log('updatedTodo:', updatedTodo);
 
     console.log(`
-✅ 정리:
-   - Destructuring: "꺼내기" + "필요 없는 것 버리기" + "나머지 모으기(...rest)"에 강력.
-   - Spread: 기존 배열/객체를 "펼쳐서" 새로운 배열/객체를 만들 때 사용.
-   - 이 둘을 조합하면, 데이터를 다루는 코드가 훨씬 깔끔하고 선언적으로 바뀐다.
-`);
+    ✅ 정리:
+    - Destructuring: "꺼내기" + "필요 없는 것 버리기" + "나머지 모으기(...rest)"에 강력.
+    - Spread: 기존 배열/객체를 "펼쳐서" 새로운 배열/객체를 만들 때 사용.
+    - 이 둘을 조합하면, 데이터를 다루는 코드가 훨씬 깔끔하고 선언적으로 바뀐다.
+    `);
 
     console.log('');
     console.log('='.repeat(50));

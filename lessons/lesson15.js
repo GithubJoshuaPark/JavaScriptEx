@@ -20,7 +20,7 @@ function fakeRequest(name, ms, shouldFail = false) {
     });
 }
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 15: async/await으로 비동기 흐름 제어하기');
     console.log('='.repeat(50));
     console.log('');
@@ -56,7 +56,7 @@ async function run() {
     - async 함수의 return 값 → Promise.resolve(그 값)으로 처리된다고 보면 됨.
     `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. await로 비동기 코드를 "동기처럼" 작성하기
@@ -108,7 +108,7 @@ async function run() {
     - then 체이닝보다 읽고 이해하기 훨씬 쉽다.
     `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. async/await에서 에러 처리 (try/catch)
@@ -146,7 +146,7 @@ async function run() {
     - 비즈니스 로직이 복잡할수록 가독성이 크게 좋아진다.
     `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. 순차 실행 vs 병렬 실행 (성능 차이)
@@ -208,7 +208,7 @@ async function run() {
     - 병렬: 여러 작업을 동시에 시작 → 총 시간 ≒ 가장 오래 걸리는 하나의 시간
     `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 5. forEach + await 주의점 vs for...of
@@ -248,7 +248,7 @@ async function run() {
     - 동시에 처리해도 될 때     → map으로 Promise 배열 만들고 Promise.all
     `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 6. Promise.all과 async/await 조합

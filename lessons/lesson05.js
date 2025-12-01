@@ -4,7 +4,7 @@
 
 const { f_pause } = require('../utils');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 5: 배열 기본 조작(map, filter) 실습');
     console.log('='.repeat(50));
     console.log('');
@@ -36,7 +36,7 @@ async function run() {
     console.log(`shift() 결과: ${shifted}`);
     console.log('shift() 후:', fruits);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. map (배열 변환)
@@ -58,7 +58,7 @@ async function run() {
     console.log('');
     console.log('💡 map은 원본 배열을 변경하지 않고 새로운 배열을 반환합니다.');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. filter (조건에 맞는 요소만 추출)
@@ -77,7 +77,7 @@ async function run() {
     const evenScores = scores.filter(score => score % 2 === 0);
     console.log('짝수 점수 (filter):', evenScores);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. 메서드 체이닝 (Chaining)

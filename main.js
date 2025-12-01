@@ -41,11 +41,13 @@ const lessons = [
     { id: 30, title: '모듈 구조를 갖춘 미니 프로젝트 구성', file: './lessons/lesson30' },
 ];
 
+// ✅ readline 인터페이스는 딱 한 번만 생성
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
 
+// ✅ 공용 메뉴 출력
 function showMenu() {
     console.clear();
     const emoji = getRandomEmoji();
@@ -63,26 +65,26 @@ function showMenu() {
     console.log('------------------------------------');
 }
 
-function ask(question, rlInterface = rl) {
+// ✅ 공용 ask 함수 (항상 같은 rl 사용)
+function ask(question) {
     return new Promise((resolve) => {
-        rlInterface.question(question, (answer) => {
+        rl.question(question, (answer) => {
             resolve(answer.trim());
         });
     });
 }
 
+// ✅ 메인 루프
 async function mainLoop() {
-    let currentRl = rl;
-
     while (true) {
         showMenu();
 
-        const answer = await ask('\n실행할 레슨 번호를 선택하세요 (0: 종료): ', currentRl);
+        const answer = await ask('\n실행할 레슨 번호를 선택하세요 (0: 종료): ');
         const num = Number(answer);
 
         if (Number.isNaN(num)) {
             console.log(`\n${getRandomEmoji()} 숫자를 입력해 주세요.`);
-            await ask('엔터를 누르면 메뉴로 돌아갑니다...', currentRl);
+            await ask('엔터를 누르면 메뉴로 돌아갑니다...');
             continue;
         }
 
@@ -95,7 +97,7 @@ async function mainLoop() {
 
         if (!lessonInfo) {
             console.log(`\n${getRandomEmoji()} 존재하지 않는 레슨 번호입니다.`);
-            await ask('엔터를 누르면 메뉴로 돌아갑니다...', currentRl);
+            await ask('엔터를 누르면 메뉴로 돌아갑니다...');
             continue;
         }
 
@@ -104,12 +106,11 @@ async function mainLoop() {
         console.log('------------------------------------\n');
 
         try {
-            // 각 레슨 파일은 ./lessons/lessonXX.js 형태
             const lessonModule = require(lessonInfo.file);
 
             if (typeof lessonModule.run === 'function') {
-                // run()이 동기든 비동기든 대응
-                await Promise.resolve(lessonModule.run());
+                // ✅ 같은 rl을 레슨에 넘겨줌
+                await Promise.resolve(lessonModule.run(rl));
             } else {
                 console.log(`${getRandomEmoji()} 이 레슨은 아직 run() 함수가 구현되지 않았습니다.`);
             }
@@ -118,18 +119,11 @@ async function mainLoop() {
             console.log(err.message);
         }
 
-        // 레슨 실행 후 readline 인터페이스 재생성
-        currentRl.close();
-        currentRl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout,
-        });
-
         console.log('\n------------------------------------');
-        await ask(`${getRandomEmoji()} 엔터를 누르면 메뉴로 돌아갑니다...`, currentRl);
+        await ask(`${getRandomEmoji()} 엔터를 누르면 메뉴로 돌아갑니다...`);
     }
 
-    currentRl.close();
+    rl.close();
 }
 
 mainLoop();

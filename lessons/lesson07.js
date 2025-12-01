@@ -4,7 +4,7 @@
 
 const { f_pause } = require('../utils');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 7: 객체 생성 및 속성 다루기');
     console.log('='.repeat(50));
     console.log('');
@@ -24,7 +24,7 @@ async function run() {
 
     console.log('생성된 객체:', hero);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. 속성 접근 (Dot vs Bracket)
@@ -41,7 +41,7 @@ async function run() {
     const key = 'age';
     console.log(`나이 (변수로 접근): ${hero[key]}`); // hero.key는 undefined가 됨
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. 속성 추가, 수정, 삭제
@@ -61,7 +61,7 @@ async function run() {
     delete hero.isAlive;
     console.log('속성 삭제 후 (isAlive 삭제):', hero);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. 객체 메서드 (Object Methods)
@@ -85,7 +85,7 @@ async function run() {
     console.log(`더하기: ${calculator.add()}`);
     console.log(`빼기: ${calculator.subtract()}`);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 5. 객체 순회 (Iteration)

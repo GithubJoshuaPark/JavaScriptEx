@@ -8,7 +8,7 @@ const { f_pause, getRandomEmoji } = require('../utils');
 const fs = require('fs');
 const path = require('path');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 12: JSON.parse / JSON.stringify 실습');
     console.log('='.repeat(50));
     console.log('');
@@ -43,13 +43,13 @@ async function run() {
     console.log(json2);
 
     console.log(`
-💡 JSON.stringify(obj, replacer, space)
-   - obj: JS 객체
-   - replacer: 특정 키만 선택하거나 변환할 때 사용 (지금은 null)
-   - space: 들여쓰기 칸 수 (숫자 또는 문자열) → 2를 많이 사용
-`);
+    💡 JSON.stringify(obj, replacer, space)
+    - obj: JS 객체
+    - replacer: 특정 키만 선택하거나 변환할 때 사용 (지금은 null)
+    - space: 들여쓰기 칸 수 (숫자 또는 문자열) → 2를 많이 사용
+    `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. JSON 문자열 → JS 객체 (JSON.parse)
@@ -58,13 +58,13 @@ async function run() {
     console.log('-'.repeat(50));
 
     const jsonText = `
-{
-  "title": "JavaScript 연습",
-  "completed": false,
-  "tags": ["javascript", "node", "study"],
-  "progress": 0.7
-}
-`.trim();
+    {
+        "title": "JavaScript 연습",
+        "completed": false,
+        "tags": ["javascript", "node", "study"],
+        "progress": 0.7
+    }
+    `.trim();
 
     console.log('JSON 문자열:');
     console.log(jsonText);
@@ -79,12 +79,12 @@ async function run() {
     console.log(`parsed.progress   = ${parsed.progress}`);
 
     console.log(`
-💡 JSON.parse(text)
-   - JSON 형식의 문자열을 JS 객체로 변환
-   - 문자열 포맷이 JSON 규칙을 위반하면 예외(에러) 발생
-`);
+    💡 JSON.parse(text)
+    - JSON 형식의 문자열을 JS 객체로 변환
+    - 문자열 포맷이 JSON 규칙을 위반하면 예외(에러) 발생
+    `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. stringify의 replacer 사용 예
@@ -116,13 +116,13 @@ async function run() {
     console.log(maskedJson);
 
     console.log(`
-💡 replacer:
-   - 배열: 포함할 키 목록을 지정
-   - 함수: 각 key, value를 받아서 "변환된 값"을 반환
-   - 민감 정보 마스킹, 로그 필터링 등에 사용 가능
-`);
+    💡 replacer:
+    - 배열: 포함할 키 목록을 지정
+    - 함수: 각 key, value를 받아서 "변환된 값"을 반환
+    - 민감 정보 마스킹, 로그 필터링 등에 사용 가능
+    `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. parse의 reviver 사용 예
@@ -131,12 +131,12 @@ async function run() {
     console.log('-'.repeat(50));
 
     const jsonWithDates = `
-{
-  "title": "일정 관리",
-  "start": "2025-12-01T09:00:00.000Z",
-  "end": "2025-12-01T11:00:00.000Z"
-}
-`.trim();
+    {
+    "title": "일정 관리",
+    "start": "2025-12-01T09:00:00.000Z",
+    "end": "2025-12-01T11:00:00.000Z"
+    }
+    `.trim();
 
     console.log('날짜 문자열이 포함된 JSON:');
     console.log(jsonWithDates);
@@ -161,12 +161,12 @@ async function run() {
     console.log('start.toLocaleString():', parsedWithReviver.start.toLocaleString());
 
     console.log(`
-💡 JSON.parse(text, reviver)
-   - reviver(key, value): 파싱 과정에서 각 값을 가공할 수 있는 함수
-   - 문자열 → Date, 숫자 변환, 마이그레이션 등에 활용 가능
-`);
+    💡 JSON.parse(text, reviver)
+    - reviver(key, value): 파싱 과정에서 각 값을 가공할 수 있는 함수
+    - 문자열 → Date, 숫자 변환, 마이그레이션 등에 활용 가능
+    `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 5. 파일로 JSON 저장/읽기 (fs 모듈 사용) — tmp/lesson12 로 변경
@@ -211,10 +211,10 @@ async function run() {
     console.log(loadedTodo);
 
     console.log(`
-💡 JSON + fs 조합은 로컬 데이터 임시 저장, 로그 기록, 설정 파일 관리 등에 무척 자주 사용됩니다.
-`);
+    💡 JSON + fs 조합은 로컬 데이터 임시 저장, 로그 기록, 설정 파일 관리 등에 무척 자주 사용됩니다.
+    `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 6. 잘못된 JSON 파싱 시 에러 처리
@@ -236,12 +236,12 @@ async function run() {
     }
 
     console.log(`
-✅ 정리:
-   - JSON.stringify: JS 객체 → JSON 문자열
-   - JSON.parse: JSON 문자열 → JS 객체
-   - replacer / reviver로 변환 과정에서 필터링, 가공 가능
-   - 실제 개발에서는 파일, API 통신, 설정 관리 등에 필수적으로 사용
-`);
+    ✅ 정리:
+    - JSON.stringify: JS 객체 → JSON 문자열
+    - JSON.parse: JSON 문자열 → JS 객체
+    - replacer / reviver로 변환 과정에서 필터링, 가공 가능
+    - 실제 개발에서는 파일, API 통신, 설정 관리 등에 필수적으로 사용
+    `);
 
     console.log('');
     console.log('='.repeat(50));

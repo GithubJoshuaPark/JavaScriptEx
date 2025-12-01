@@ -4,7 +4,7 @@
 
 const { f_pause } = require('../utils');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 6: 함수 선언문 vs 화살표 함수 비교');
     console.log('='.repeat(50));
     console.log('');
@@ -23,7 +23,7 @@ async function run() {
     }
     console.log('특징: 호이스팅이 되어 코드의 어디서든 호출할 수 있습니다.');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. 함수 표현식 (Function Expression)
@@ -40,7 +40,7 @@ async function run() {
     console.log(`호출 결과: ${subtract(5, 2)}`);
     console.log('특징: 변수에 할당된 이후에만 호출할 수 있습니다.');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. 화살표 함수 (Arrow Function)
@@ -62,7 +62,7 @@ async function run() {
     const square = x => x * x;
     console.log(`매개변수 하나 (소괄호 생략): ${square(5)}`);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. this 바인딩의 차이 (중요!)

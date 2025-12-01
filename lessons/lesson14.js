@@ -5,7 +5,7 @@
 
 const { f_pause, getRandomEmoji, f_sleep } = require('../utils');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 14: Promise 기본 — 성공/실패 제어');
     console.log('='.repeat(50));
     console.log('');
@@ -43,7 +43,7 @@ async function run() {
 
     console.log('\n\n💡 then을 등록한 직후 코드가 바로 계속 실행됩니다 (비동기).');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. resolve / reject 흐름 실습
@@ -95,7 +95,7 @@ async function run() {
     - finally(...) → 성공/실패와 상관없이 항상 실행
     `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. 콜백 기반 setTimeout을 Promise로 감싸기
@@ -128,7 +128,7 @@ async function run() {
     - 나중에 async/await로 전환하기도 편하다.
     `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. Promise 체이닝 (then 연속 호출)
@@ -165,7 +165,7 @@ async function run() {
     - then에서 "Promise"를 반환하면 → 그 Promise가 끝날 때까지 기다렸다가 다음 then 실행
     `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 5. Promise.all — 여러 비동기 작업 동시에 실행
@@ -209,7 +209,7 @@ async function run() {
     - 여러 비동기 작업의 "성공 결과들을 배열"로 받고 싶을 때 사용
     `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 6. Promise.race — 가장 먼저 끝나는 것만 관심 있을 때
@@ -236,7 +236,7 @@ async function run() {
     - 예: 느린 서버가 있을 때, 더 빠른 서버 응답을 우선 사용하고 싶을 때 등
     `);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 7. 실전 패턴 요약

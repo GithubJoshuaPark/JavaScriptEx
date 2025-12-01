@@ -4,7 +4,7 @@
 
 const { f_pause } = require('../utils');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 1: 변수 선언과 데이터 타입 출력하기');
     console.log('='.repeat(50));
     console.log('');
@@ -30,7 +30,7 @@ async function run() {
     console.log('const name3 =', name3);
     // name3 = 'Eve'; // ❌ 에러 발생! const는 재할당 불가
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. 기본 데이터 타입 (Primitive Types)
@@ -70,7 +70,7 @@ async function run() {
     const bigNum = 9007199254740991n;
     console.log('BigInt:', bigNum, '→ typeof:', typeof bigNum);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. 참조 데이터 타입 (Reference Types)
@@ -97,7 +97,7 @@ async function run() {
     };
     console.log('Function:', greet, '→ typeof:', typeof greet);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. 타입 변환 (Type Conversion)
@@ -121,7 +121,7 @@ async function run() {
     console.log('Boolean(""):', Boolean('')); // false
     console.log('Boolean("hello"):', Boolean('hello')); // true
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 5. 변수 선언 비교 요약

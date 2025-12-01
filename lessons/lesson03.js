@@ -4,7 +4,7 @@
 
 const { f_pause } = require('../utils');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 3: 조건문으로 점수 평가 프로그램 만들기');
     console.log('='.repeat(50));
     console.log('');
@@ -39,7 +39,7 @@ async function run() {
 
     console.log(`➡️ 최종 학점: ${grade}`);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. switch 문
@@ -70,7 +70,7 @@ async function run() {
             console.log('피드백: 알 수 없는 학점입니다.');
     }
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. 삼항 연산자 (Ternary Operator)
@@ -89,7 +89,7 @@ async function run() {
     console.log('');
     console.log('💡 삼항 연산자는 간단한 if-else 문을 한 줄로 줄일 때 유용합니다.');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. 단축 평가 (Short-circuit Evaluation)

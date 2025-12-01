@@ -5,7 +5,7 @@
 
 const { f_pause, getRandomEmoji } = require('../utils');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 9: Closure 이해를 위한 카운터 함수 만들기');
     console.log('='.repeat(50));
     console.log('');
@@ -29,7 +29,7 @@ async function run() {
     console.log('❗ 함수가 호출될 때마다 count가 다시 0부터 시작합니다.');
     console.log('   → "어딘가에 계속 쌓이는 값"을 유지하고 싶을 때는 이 방식이 부족합니다.');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. Closure를 이용한 카운터 만들기 (객체 버전)
@@ -76,7 +76,7 @@ async function run() {
     console.log('\ncounterA.count 직접 접근:', counterA.count); // undefined
     console.log('➡ count는 완전히 숨겨져 있고, 오직 메서드로만 조작 가능합니다.');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. 더 간단한 Closure 카운터 (함수만 반환)
@@ -107,7 +107,7 @@ async function run() {
     console.log('\n💡 simpleCounter()를 호출할 때마다 n이라는 "개인 상태"를 가진 함수가 하나씩 생성됩니다.');
     console.log('   이 반환된 함수가 n을 계속 기억하고 사용하는 것이 Closure입니다.');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. Arrow Function과 Closure

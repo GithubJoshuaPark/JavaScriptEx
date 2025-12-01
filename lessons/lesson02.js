@@ -4,7 +4,7 @@
 
 const { f_pause } = require('../utils');
 
-async function run() {
+async function run(outerRl) {
     console.log('📚 레슨 2: 템플릿 리터럴로 문자열 조합하기');
     console.log('='.repeat(50));
     console.log('');
@@ -29,7 +29,7 @@ async function run() {
     console.log('');
     console.log('💡 템플릿 리터럴은 백틱(`)으로 감싸고, ${} 안에 변수를 넣습니다.');
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 2. 표현식 삽입 (Expression Interpolation)
@@ -48,7 +48,7 @@ async function run() {
     const isMember = true;
     console.log(`회원 여부: ${isMember ? '회원입니다 🙆‍♂️' : '비회원입니다 🙅‍♂️'} (삼항 연산자)`);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 3. 멀티라인 문자열 (Multi-line Strings)
@@ -72,7 +72,7 @@ async function run() {
     console.log('[템플릿 리터럴]');
     console.log(newMulti);
 
-    await f_pause();
+    await f_pause(outerRl);
 
     // =============================
     // 4. 함수 호출 결과 삽입
