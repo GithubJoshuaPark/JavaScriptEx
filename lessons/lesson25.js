@@ -62,8 +62,8 @@ async function handleNonEmptyString(ask, rl) {
     f_printCodeBlock(
         'isNonEmptyString 사용 예',
         `isNonEmptyString('hello');   // true
-        isNonEmptyString('   ');      // false
-        isNonEmptyString('');         // false`
+isNonEmptyString('   ');      // false
+isNonEmptyString('');         // false`
     );
 
     const input = await ask('검사할 문자열을 입력하세요: ');
@@ -83,9 +83,9 @@ async function handleNumberString(ask, rl) {
     f_printCodeBlock(
         'isNumberString 사용 예',
         `isNumberString('123');    // true
-        isNumberString('-3.14');  // true
-        isNumberString('abc');    // false
-        isNumberString('');       // false`
+isNumberString('-3.14');  // true
+isNumberString('abc');    // false
+isNumberString('');       // false`
     );
 
     const input = await ask('검사할 값을 입력하세요: ');
@@ -105,9 +105,9 @@ async function handleIntRange(ask, rl) {
     f_printCodeBlock(
         'isIntegerString / isIntInRange 사용 예',
         `isIntegerString('10');         // true
-        isIntInRange('10', 1, 100);    // true
-        isIntInRange('0', 1, 100);     // false (범위 밖)
-        isIntInRange('3.14', 1, 100);  // false (정수 아님)`
+isIntInRange('10', 1, 100);    // true
+isIntInRange('0', 1, 100);     // false (범위 밖)
+isIntInRange('3.14', 1, 100);  // false (정수 아님)`
     );
 
     const input = await ask('1 ~ 100 사이의 정수를 입력하세요: ');
@@ -133,8 +133,8 @@ async function handleEmail(ask, rl) {
     f_printCodeBlock(
         'isEmail 사용 예',
         `isEmail('user@example.com'); // true
-        isEmail('user@');            // false
-        isEmail('abc');              // false`
+isEmail('user@');            // false
+isEmail('abc');              // false`
     );
 
     const input = await ask('검사할 이메일 주소를 입력하세요: ');
@@ -154,9 +154,9 @@ async function handleKoreanPhone(ask, rl) {
     f_printCodeBlock(
         'isKoreanPhone 사용 예',
         `isKoreanPhone('01012345678');      // true
-        isKoreanPhone('010-1234-5678');    // true
-        isKoreanPhone('0191234567');       // true
-        isKoreanPhone('1234');             // false`
+isKoreanPhone('010-1234-5678');    // true
+isKoreanPhone('0191234567');       // true
+isKoreanPhone('1234');             // false`
     );
 
     const input = await ask('검사할 휴대폰 번호를 입력하세요 (예: 010-1234-5678): ');
@@ -176,9 +176,9 @@ async function handleDate(ask, rl) {
     f_printCodeBlock(
         'isValidDateYYYYMMDD 사용 예',
         `isValidDateYYYYMMDD('2025-11-28'); // true
-        isValidDateYYYYMMDD('20251128');   // true
-        isValidDateYYYYMMDD('2025/02/30'); // false (없는 날짜)
-        isValidDateYYYYMMDD('20251301');   // false (13월은 없음)`
+isValidDateYYYYMMDD('20251128');   // true
+isValidDateYYYYMMDD('2025/02/30'); // false (없는 날짜)
+isValidDateYYYYMMDD('20251301');   // false (13월은 없음)`
     );
 
     const input = await ask('검사할 날짜를 입력하세요 (예: 2025-11-28 또는 20251128): ');

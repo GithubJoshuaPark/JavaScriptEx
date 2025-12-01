@@ -105,11 +105,11 @@ function checkExistence() {
     f_printCodeBlock(
         'existsSync 사용 예',
         `const exists = fs.existsSync('/path/to/file');
-        if (exists) {
-            console.log('파일이 존재합니다');
-        } else {
-            console.log('파일이 없습니다');
-        }`
+if (exists) {
+    console.log('파일이 존재합니다');
+} else {
+    console.log('파일이 없습니다');
+}`
     );
 }
 

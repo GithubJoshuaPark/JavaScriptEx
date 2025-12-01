@@ -27,12 +27,12 @@ async function run(rl) {
         'utils.js 에서 Logger 생성 함수 사용 예',
         `const { Logger } = require('./utils');
 
-        const log = Logger('myApp');
+const log = Logger('myApp');
 
-        log.info('서버가 시작되었습니다.');
-        log.warn('메모리 사용량이 높습니다.');
-        log.error('DB 연결 실패!');
-        log.debug('디버그용 상세 정보');`
+log.info('서버가 시작되었습니다.');
+log.warn('메모리 사용량이 높습니다.');
+log.error('DB 연결 실패!');
+log.debug('디버그용 상세 정보');`
     );
 
     console.log(`

@@ -30,30 +30,30 @@ function explainModuleScope() {
     f_printCodeBlock(
         '📄 예시: mathUtil.js',
         `// mathUtil.js
-    console.log('mathUtil 모듈이 로드되었습니다.');
+console.log('mathUtil 모듈이 로드되었습니다.');
 
-    function add(a, b) {
-        return a + b;
-    }
+function add(a, b) {
+    return a + b;
+}
 
-    function mul(a, b) {
-        return a * b;
-    }
+function mul(a, b) {
+    return a * b;
+}
 
-    // 바깥에서 쓸 수 있도록 "내보내기"
-    module.exports = {
-        add,
-        mul,
-    };`
+// 바깥에서 쓸 수 있도록 "내보내기"
+module.exports = {
+    add,
+    mul,
+};`
     );
 
     f_printCodeBlock(
         '📄 예시: app.js (mathUtil 모듈 사용)',
         `// app.js
-    const mathUtil = require('./mathUtil');
+const mathUtil = require('./mathUtil');
 
-    console.log('1 + 2 =', mathUtil.add(1, 2));
-    console.log('3 * 4 =', mathUtil.mul(3, 4));`
+console.log('1 + 2 =', mathUtil.add(1, 2));
+console.log('3 * 4 =', mathUtil.mul(3, 4));`
     );
 
     console.log(`
@@ -74,29 +74,29 @@ function explainExports() {
     f_printCodeBlock(
         '✅ 올바른 사용 예시',
         `// a.js
-    function foo() { /* ... */ }
-    function bar() { /* ... */ }
+function foo() { /* ... */ }
+function bar() { /* ... */ }
 
-    // 객체로 내보내기
-    module.exports = { foo, bar };
+// 객체로 내보내기
+module.exports = { foo, bar };
 
-    // 또는 개별로 속성 추가도 가능
-    module.exports.foo = foo;
-    module.exports.bar = bar;`
+// 또는 개별로 속성 추가도 가능
+module.exports.foo = foo;
+module.exports.bar = bar;`
     );
 
     f_printCodeBlock(
         '⚠ exports를 사용할 때 주의할 점',
         `// b.js
-    function foo() {}
-    function bar() {}
+function foo() {}
+function bar() {}
 
-    // 초기에는 exports === module.exports 이지만...
-    exports.foo = foo;
-    exports.bar = bar;
+// 초기에는 exports === module.exports 이지만...
+exports.foo = foo;
+exports.bar = bar;
 
-    // 이렇게 전체를 바꾸면 문제가 생김:
-    // exports = { foo, bar };  // ❌ 이건 module.exports를 바꾸지 않음
+// 이렇게 전체를 바꾸면 문제가 생김:
+// exports = { foo, bar };  // ❌ 이건 module.exports를 바꾸지 않음
 `
     );
 
@@ -123,7 +123,7 @@ function explainBuiltinModules() {
     f_printCodeBlock(
         '📦 내장 모듈 불러오기',
         `const fs = require('fs');
-    const path = require('path');`
+const path = require('path');`
     );
 
     // 실제로 path, fs를 한번 사용해 보기
@@ -178,10 +178,10 @@ function explainLocalRequire() {
     f_printCodeBlock(
         '예시: 현재 프로젝트의 utils.js 불러오기',
         `// 어떤 파일에서...
-    const utils = require('../utils');
+const utils = require('../utils');
 
-    console.log(utils.getRandomEmoji());
-    utils.f_pause(rl); // ← rl을 인자로 넘겨서 사용`
+console.log(utils.getRandomEmoji());
+utils.f_pause(rl); // ← rl을 인자로 넘겨서 사용`
     );
 
     console.log(`
