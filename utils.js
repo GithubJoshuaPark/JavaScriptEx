@@ -73,6 +73,15 @@ function f_normalizeLabel(label) {
     return String(label).replace(/[^0-9A-Za-z_-]+/g, '_');
 }
 
+// 헬퍼: 코드 블록 출력
+function f_printCodeBlock(title, code) {
+    console.log(`\n${getRandomEmoji()} ${title}`);
+    console.log('-'.repeat(60));
+    console.log(code);
+    console.log('-'.repeat(60));
+    console.log('');
+}
+
 
 // ###############################
 // 📤 모듈 내보내기
@@ -84,4 +93,5 @@ module.exports = {
     f_sleep,
     f_normalizeDateInput,
     f_normalizeLabel,
+    f_printCodeBlock,
 };
