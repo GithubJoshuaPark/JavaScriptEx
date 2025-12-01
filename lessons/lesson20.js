@@ -57,10 +57,10 @@ function joinAndResolveExample() {
     f_printCodeBlock(
         'join vs resolve 비교',
         `const joined  = path.join('folder', 'sub', 'file.txt');
-// 단순히 경로를 이어 붙여줌 (상대 경로 가능)
+        // 단순히 경로를 이어 붙여줌 (상대 경로 가능)
 
-const resolved = path.resolve('folder', 'sub', 'file.txt');
-// 현재 작업 디렉토리(process.cwd()) 기준으로 "절대 경로"를 만들어 줌`
+        const resolved = path.resolve('folder', 'sub', 'file.txt');
+        // 현재 작업 디렉토리(process.cwd()) 기준으로 "절대 경로"를 만들어 줌`
     );
 
     console.log('💡 포인트:');
@@ -92,10 +92,9 @@ function pathPartsExample() {
     f_printCodeBlock(
         'dirname / basename / extname',
         `const filePath = '/Users/joshua/dev/project/index.js';
-
-path.dirname(filePath);   // '/Users/joshua/dev/project'
-path.basename(filePath);  // 'index.js'
-path.extname(filePath);   // '.js'`
+        path.dirname(filePath);   // '/Users/joshua/dev/project'
+        path.basename(filePath);  // 'index.js'
+        path.extname(filePath);   // '.js'`
     );
 
     console.log('💡 포인트: 파일 경로에서 디렉토리, 파일명, 확장자를 쉽게 분리할 수 있습니다.\n');
@@ -135,20 +134,20 @@ function parseAndFormatExample() {
     f_printCodeBlock(
         'parse / format 예시',
         `const parsed = path.parse('/foo/bar/baz.txt');
-// {
-//   root: '/',
-//   dir: '/foo/bar',
-//   base: 'baz.txt',
-//   ext: '.txt',
-//   name: 'baz'
-// }
+        // {
+        //   root: '/',
+        //   dir: '/foo/bar',
+        //   base: 'baz.txt',
+        //   ext: '.txt',
+        //   name: 'baz'
+        // }
 
-const formatted = path.format({
-  dir: '/foo/bar',
-  name: 'baz',
-  ext: '.txt',
-});
-// '/foo/bar/baz.txt'`
+        const formatted = path.format({
+            dir: '/foo/bar',
+            name: 'baz',
+            ext: '.txt',
+        });
+        // '/foo/bar/baz.txt'`
     );
 
     console.log('💡 포인트: 경로를 객체로 쪼개서 조작한 뒤 다시 문자열로 조립할 수 있습니다.\n');
@@ -178,11 +177,11 @@ function relativeAndIsAbsoluteExample() {
     f_printCodeBlock(
         'relative / isAbsolute',
         `path.relative('/data/origin', '/data/origin/images/pic.png');
-// 'images/pic.png'
+        // 'images/pic.png'
 
-path.isAbsolute('/abc/def');      // true (유닉스/맥)
-path.isAbsolute('C:\\abc\\def');  // true (윈도우)
-path.isAbsolute('relative/path'); // false`
+        path.isAbsolute('/abc/def');      // true (유닉스/맥)
+        path.isAbsolute('C:\\abc\\def');  // true (윈도우)
+        path.isAbsolute('relative/path'); // false`
     );
 
     console.log('💡 포인트:');
@@ -204,21 +203,20 @@ function sepAndDelimiterExample() {
     f_printCodeBlock(
         'sep / delimiter 예시',
         `// Windows 예시
-// path.sep       -> '\\\\'
-// path.delimiter -> ';'
-
-// POSIX (macOS, Linux) 예시
-// path.sep       -> '/'
-// path.delimiter -> ':'`
+        // path.sep       -> '\\\\'
+        // path.delimiter -> ';'
+        // POSIX (macOS, Linux) 예시
+        // path.sep       -> '/'
+        // path.delimiter -> ':'`
     );
 
     console.log(`
-💡 포인트:
-  - path.sep: 파일 경로에서 디렉토리 사이를 구분하는 문자
-    (윈도우: '\\\\', 유닉스/맥: '/')
-  - path.delimiter: PATH 같은 환경변수에서 여러 경로를 나눌 때 쓰는 문자
-    (윈도우: ';', 유닉스/맥: ':')
-`);
+    💡 포인트:
+        - path.sep: 파일 경로에서 디렉토리 사이를 구분하는 문자
+            (윈도우: '\\\\', 유닉스/맥: '/')
+        - path.delimiter: PATH 같은 환경변수에서 여러 경로를 나눌 때 쓰는 문자
+            (윈도우: ';', 유닉스/맥: ':')
+    `);
 }
 
 // ------------------------------------------
