@@ -6,6 +6,10 @@
 //  - parse / format
 //  - relative / isAbsolute
 //  - sep / delimiter
+
+// ※ 운영체제마다 경로 구분자가 다릅니다:
+// Windows: C:\Users\Joshua\file.txt (백슬래시 \)
+// macOS/Linux: /Users/Joshua/file.txt (슬래시 /)
 // ===============================
 
 const path = require('path');

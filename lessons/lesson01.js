@@ -4,6 +4,15 @@
 
 const { f_pause } = require('../utils');
 
+// 🔍 require() 동작 순서
+// Node.js는 require('모듈명')을 만나면 다음 순서로 모듈을 찾습니다:
+
+// 1. 내장 모듈인지 확인 (예: path, fs, http)
+//    맞으면 Node.js 내부에서 로드 ✅
+// 2. node_modules/ 폴더에서 검색
+//    현재 디렉토리부터 시작해서 상위 디렉토리로 올라가며 검색
+// 3. 상대 경로 파일 검색 (./, ../로 시작하는 경우)
+
 async function run(outerRl) {
     console.log('📚 레슨 1: 변수 선언과 데이터 타입 출력하기');
     console.log('='.repeat(50));
