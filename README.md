@@ -1,5 +1,8 @@
 # 🎓 JavaScript 학습 프로젝트 (JavaScript Lessons)
 
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-blue)](https://github.com/joshuapark)
+[![JavaScript Lessons](https://img.shields.io/badge/JavaScript-Lessons-blue)](https://github.com/joshuapark/JavaScriptEx)
+
 JavaScript의 기본부터 고급 개념까지 30개의 실습 레슨으로 학습할 수 있는 인터랙티브 학습 프로젝트입니다.
 
 ## 📋 목차
@@ -50,22 +53,26 @@ javaScriptEx/
 ### 주요 파일 설명
 
 #### `main.js`
+
 - 프로그램의 진입점
 - 30개 레슨의 메뉴를 표시하고 사용자 입력을 처리
 - 선택된 레슨을 동적으로 로드하여 실행
 - 랜덤 이모지를 활용한 사용자 친화적 인터페이스
 
 #### `utils.js`
+
 - 공통 유틸리티 함수 모음
 - `ME_EMOJI`: 100개 이상의 다양한 이모지 배열
 - `getRandomEmoji()`: 랜덤 이모지 선택 함수
 
 #### `make_empty_files.sh`
+
 - `lessons/` 디렉토리 생성
 - `lesson01.js` ~ `lesson30.js` 템플릿 파일 자동 생성
 - 기본 구조가 포함된 빈 레슨 파일 생성
 
 #### `lessons/`
+
 - 각 레슨의 실습 코드가 포함된 디렉토리
 - 각 파일은 `run()` 함수를 export하여 main.js에서 실행
 
@@ -103,6 +110,7 @@ bash make_empty_files.sh
 ## 📚 레슨 목록
 
 ### 기초 문법 (1-7)
+
 1. **변수 선언과 데이터 타입 출력하기** - var, let, const 및 기본 타입
 2. **템플릿 리터럴로 문자열 조합하기** - 백틱과 문자열 보간
 3. **조건문으로 점수 평가 프로그램 만들기** - if/else, switch
@@ -112,6 +120,7 @@ bash make_empty_files.sh
 7. **객체 생성 및 속성 다루기** - 객체 리터럴과 속성 접근
 
 ### 고급 개념 (8-12)
+
 8. **Scope와 Hoisting 동작 실험하기** - 스코프 체인과 호이스팅
 9. **Closure 이해를 위한 카운터 함수 만들기** - 클로저 활용
 10. **this 바인딩 — call, apply, bind 실습** - this 컨텍스트
@@ -119,6 +128,7 @@ bash make_empty_files.sh
 12. **JSON.parse / JSON.stringify 실습** - JSON 처리
 
 ### 비동기 프로그래밍 (13-17)
+
 13. **setTimeout, setInterval 타이머 실습** - 타이머 함수
 14. **Promise 기본 — 성공/실패 제어** - Promise 생성과 사용
 15. **async/await으로 비동기 흐름 제어하기** - 비동기 함수
@@ -126,6 +136,7 @@ bash make_empty_files.sh
 17. **비동기 오류 처리 (try/catch)** - 에러 핸들링
 
 ### Node.js 모듈 (18-22)
+
 18. **Node.js 모듈 시스템 이해하기** - require/module.exports
 19. **fs 모듈로 파일 읽고 쓰기** - 파일 시스템 조작
 20. **path 모듈로 경로 처리 실습** - 경로 관리
@@ -133,12 +144,14 @@ bash make_empty_files.sh
 22. **npm 패키지(lodash) 설치 및 사용해 보기** - 외부 패키지 활용
 
 ### 실전 프로젝트 (23-26)
+
 23. **Todo List 데이터 관리 로직 (CRUD) 기초** - CRUD 구현
 24. **간단한 Logger(로그 기록기) 만들기** - 로깅 시스템
 25. **유효성 검사 함수 세트 만들기** - Validation
 26. **간단한 사용자 인증 흐름 시뮬레이션** - 인증 로직
 
 ### 심화 주제 (27-30)
+
 27. **Prototype vs Class 상속 비교** - 상속 패턴
 28. **EventEmitter로 커스텀 이벤트 시스템** - 이벤트 기반 프로그래밍
 29. **함수형 프로그래밍 기초(map, reduce)** - 함수형 패러다임
@@ -189,21 +202,23 @@ node main.js
 ### 새로운 레슨 추가하기
 
 1. **레슨 파일 생성**
+
    ```bash
    # lessons 디렉토리에 새 파일 생성
    touch lessons/lesson31.js
    ```
 
 2. **레슨 코드 작성**
+
    ```javascript
    // lessons/lesson31.js
 
    function run() {
-       console.log('새로운 레슨 시작!');
+     console.log("새로운 레슨 시작!");
 
-       // 여기에 레슨 코드 작성
+     // 여기에 레슨 코드 작성
 
-       console.log('레슨 완료!');
+     console.log("레슨 완료!");
    }
 
    module.exports = { run };
@@ -212,8 +227,8 @@ node main.js
 3. **main.js에 레슨 등록**
    ```javascript
    const lessons = [
-       // ... 기존 레슨들
-       { id: 31, title: '새로운 레슨 제목', file: './lessons/lesson31' },
+     // ... 기존 레슨들
+     { id: 31, title: "새로운 레슨 제목", file: "./lessons/lesson31" },
    ];
    ```
 
@@ -224,13 +239,13 @@ node main.js
 ```javascript
 // utils.js
 function newUtilityFunction() {
-    // 함수 구현
+  // 함수 구현
 }
 
 module.exports = {
-    ME_EMOJI,
-    getRandomEmoji,
-    newUtilityFunction  // 새 함수 추가
+  ME_EMOJI,
+  getRandomEmoji,
+  newUtilityFunction, // 새 함수 추가
 };
 ```
 
